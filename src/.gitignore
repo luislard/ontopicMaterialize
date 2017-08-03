@@ -1,0 +1,8 @@
+# Ignoring node_modules folder
+/node_modules/
+
+# Ignoring dist folder
+/dist/
+
+# Ignoring mac file
+.DS_Store
