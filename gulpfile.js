@@ -14,6 +14,9 @@ var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer");
 var cssnano = require("cssnano");
 var concat = require("gulp-concat");
+var imagemin = require("gulp-imagemin");
+var responsive = require("gulp-responsive");
+
 
 // source and distribution folder
 var
@@ -21,7 +24,7 @@ var
     dest = 'dist/';
 
 // default task
-gulp.task('default', ["html","js", "sass"], function () {
+gulp.task('default', ["img","html","js", "sass"], function () {
     // iniciamos el servidor de desarrollo
     browserSync.init({ 
         server: "dist/"
@@ -94,6 +97,7 @@ gulp.task("concat-js", function(){
     return gulp.src([
                     "./src/js/*.js",
                     "node_modules/materialize-css/dist/js/materialize.js",
+                    "node_modules/materialize-css/js/**/*.js",
                     "node_modules/hammerjs/hammer.js",
                     "node_modules/jquery/dist/jquery.js"
                 ])
@@ -131,5 +135,14 @@ gulp.task("html", function(){
         .pipe(gulp.dest("dist/"))
         .pipe(browserSync.stream())
         .pipe(notify("HTML importado"));
+});
+
+
+// tarea que optimiza y crea las imágenes responsive
+gulp.task("img", function(){
+    gulp.src("src/img/*")
+        
+        .pipe(imagemin()) // optimizamos el peso de las imágenes
+        .pipe(gulp.dest("dist/img/"))
 });
 

@@ -1,3 +1,7 @@
-window.jQuery = require("jquery"); // Hace jQuery accesible públicamente
+window.$ = window.jQuery = require("jquery"); // Hace jQuery accesible públicamente
 
-alert('hola');
+import 'hammerjs';
+
+$(document).ready(function(){
+      $('.parallax').parallax();
+});

@@ -1,5 +1,23 @@
 /* main.scss */
 
-@import "override-variables";
 @import "materialize-custom";
+@import "override-variables";
 @import "materialize";
+
+.parallax-container {
+    .main-header {
+            z-index: 999;
+        }
+    .parallax {
+        img {
+            height: 100vh;
+            width: auto;
+            object-fit: cover;
+        }
+
+        
+    } 
+}
+
+
+
