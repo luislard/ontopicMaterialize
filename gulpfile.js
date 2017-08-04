@@ -37,13 +37,13 @@ gulp.task('default', ["html","js", "sass"], function () {
 });    
     
 // Bootstrap scss source
-var bootstrapSass = {
-        in: './node_modules/bootstrap-sass/'
+var materializeCss = {
+        in: './node_modules/materialize-css/'
     };
 
 // Bootstrap fonts source
 var fonts = {
-        in: [source + 'fonts/*.*', bootstrapSass.in + 'assets/fonts/**/*'],
+        in: [source + 'fonts/*.*', materializeCss.in + 'dist/fonts/**/*'],
         out: dest + 'fonts/'
     };
 
@@ -56,7 +56,7 @@ var scss = {
         outputStyle: 'nested',
         precison: 3,
         errLogToConsole: true,
-        includePaths: [bootstrapSass.in + 'assets/stylesheets']
+        includePaths: [materializeCss.in + 'sass']
     }
 };
 // Our scss source folder: .scss files
@@ -93,7 +93,8 @@ gulp.task('sass', ['fonts'], function () {
 gulp.task("concat-js", function(){
     return gulp.src([
                     "./src/js/*.js",
-                    "node_modules/bootstrap-sass/assets/javascripts/bootstrap.js",
+                    "node_modules/materialize-css/dist/js/materialize.js",
+                    "node_modules/hammerjs/hammer.js",
                     "node_modules/jquery/dist/jquery.js"
                 ])
                .pipe(concat('concat.js'))
